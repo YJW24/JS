@@ -51,3 +51,15 @@ if (yjwAge >= 18) {
     const yearLeft = 18 - yjwAge;
     console.log(`yjw is too young.Wait another ${yearLeft} years:`);
 }
+//类型转换
+const inputYear = '2001';
+console.log(Number(inputYear) + 18);
+console.log(Number('jonas'));
+console.log(String(2019), 2019);
+console.log(String(2019) + '18');
+//强制转换
+console.log('I am ' + 23 + ' years old');
+console.log('23' - '10' - 3);
+console.log('23' * 2);
+console.log('24' / 2);
+console.log('4' ** 2);
