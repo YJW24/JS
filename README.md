@@ -63,3 +63,22 @@ console.log('23' - '10' - 3);
 console.log('23' * 2);
 console.log('24' / 2);
 console.log('4' ** 2);
+//7/8
+//== ===  if else
+const favourite = Number(prompt("What's your favourite player's Number"));
+console.log(favourite);
+console.log(typeof favourite);
+if (favourite === 11) {
+    console.log('Cool! 11 is an amazing number!');
+} else {
+    if (favourite === 7) {
+        console.log('7 is also amazing number!');
+    } else {
+        console.log('why is not 11 or 7 ?');
+    }
+}
+const hasDriversLicense = true;//A
+const hasGoodVision = false;//B
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
