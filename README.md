@@ -82,3 +82,22 @@ const hasGoodVision = false;//B
 console.log(hasDriversLicense && hasGoodVision);
 console.log(hasDriversLicense || hasGoodVision);
 console.log(!hasDriversLicense);
+//7/10
+const dolphinsFirstscore = 97;
+const dolphinssecondscore = 112;
+const dolphinsthirdscore = 101;
+const koalasFirstscore = 109;
+const koalassecordscore = 95;
+const koalasthirdscore = 106;
+const averagedolphins = (dolphinsFirstscore + dolphinssecondscore + dolphinsthirdscore) / 3;
+const averagekoalas = (koalasFirstscore + koalassecordscore + koalasthirdscore) / 3;
+console.log(averagedolphins, averagekoalas);
+if (averagedolphins > averagekoalas && averagedolphins >= 100) {
+    console.log('Dolphinf win the competition!' + averagedolphins);
+} else if (averagedolphins < averagekoalas && averagekoalas >= 100) {
+    console.log('Koalas win the competition!' + averagekoalas);
+} else if ((averagedolphins === averagekoalas) && averagedolphins >= 100) {
+    console.log('Dolphinf and Koalas both win competition');
+} else {
+    console.log('No one win the competition!');
+}
