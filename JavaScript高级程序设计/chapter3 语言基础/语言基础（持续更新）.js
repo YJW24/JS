@@ -117,4 +117,4 @@ switch (day) {
     default:
         console.log('不想活了');
 }
-
+ 
