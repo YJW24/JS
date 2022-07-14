@@ -12,3 +12,4 @@ function doAdd() {
 doAdd(10);
 doAdd(30, 20)
 doAdd("yjw", 10)
+ 
