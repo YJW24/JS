@@ -1,4 +1,4 @@
-//箭头函数 Arrow
+1.//箭头函数 Arrow
 const calcAge3 = birthYear => 2022 - birthYear;
 const age3 = calcAge3(2001);
 console.log(age3);
