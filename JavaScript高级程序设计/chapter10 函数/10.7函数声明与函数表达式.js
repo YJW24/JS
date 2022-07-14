@@ -10,3 +10,4 @@ const calcAge2 = function (birthYear) {
 }
 const age2 = calcAge2(2001)
 console.log(age2);
+ 
