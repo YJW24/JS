@@ -8,3 +8,4 @@ sum = null;
 console.log(anotherSum(10, 20));    //具有多个名称 互不影响
 function foo() { }
 console.log(foo.name);              //name属性 表示函数表示符
+ 
