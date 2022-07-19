@@ -1,7 +1,7 @@
 let person=new Object();
 person.name='Nicholas';
 person.age=22;
-let person={};                  //和上一个等效
+let person1={};                  //和上一个等效
 person.name='Nicholas'
 person.age=22;
 const jonas = {                //对象字面量表示法 属性名可以是字符串或者数值
@@ -10,7 +10,7 @@ const jonas = {                //对象字面量表示法 属性名可以是字�
     age: 2022 - 2001,
     'job': 'student',
     friends: ['01', '02', '03'],
-    5:turn
+    5:ture
 };
 console.log(jonas);
 console.log(jonas.firsrName);            //点表式法
