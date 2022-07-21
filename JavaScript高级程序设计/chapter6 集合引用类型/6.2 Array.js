@@ -35,3 +35,4 @@ console.log(friends.includes('jordan'));
 if (friends.includes('DAHU')) {
     console.log('You have a friend called DAHU');
 }                                       //includes用做条件
+
