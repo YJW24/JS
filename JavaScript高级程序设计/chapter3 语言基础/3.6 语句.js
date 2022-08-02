@@ -38,6 +38,45 @@ for (let rep = 1; rep <= 10; rep++) {  //使用let声明迭代器变量
 for (; ;) {                            //无穷循环
 doSomething();
 }
+const years = [1991, 2000, 2001, 2010, 2022];    //数组与循环
+const ages = [];
+for (let i = 0; i < years.length; i++) {
+    ages.push(2022 - years[i])
+};
+console.log(ages);
+console.log(ages);
+const jonas = ['lala', 'player', 22, 'CHN', true, 'DJTU', 185];
+console.log(`-----only string-----`);
+for (let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] !== 'string') continue;   //退出当前循环停止 
+    console.log(jonas[i], typeof jonas[i]);
+}
+console.log(`-----break number-----`);
+for (let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] === 'number') break;     //立即终止
+    console.log(jonas[i], typeof jonas[i]);
+}
+
+for (let i = jonas.length - 1; i >= 0; i--) {
+    console.log(i, jonas[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`----- Starting exercise ${exercise}`);
+    for (let rep = 1; rep < 6; rep++) {                  //内循环
+        console.log(`Exerice ${exercise}:Lifting weight reptition ${rep}`);
+    }
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];     //应用
+const tips = [];
+const totals = [];
+for (let I = 0; I <= bills.length - 1; I++) {
+    let tips1 = (50 <= bills[I] && bills[I] <= 300) ? bills[I] * 0.15 : bills[I] * 0.2;
+    tips.push(tips1);
+    let totals1 = tips[I] + bills[I];
+    totals.push(totals1);
+    console.log(tips, totals);
+}
 
 
 
