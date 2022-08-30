@@ -8,16 +8,18 @@ eachFor(["2", 2, 4], func = (item) => { console.log(item) });
 
 
 
-let newArray = [];
 let filter = (array, fn) => {
+    let newArray = [];
     for (let i = 0; i < array.length; i++) {
         if (fn(array[i])) {
             newArray.push(array[i]);
         }
     }
-    console.log(newArray);
-}
-let func;
-filter([1, 2, 4, 5, 7, 8], func = (item) => Boolean(item + 3 === 4));
+    console.log(newArray)
+    return newArray;
 
-filter(['cxk', 'yujingwang', 'kobe', 'lerbon', 'present', '123456'], func = (item) => Boolean(item.length >= 6));
+}
+
+filter([1, 2, 4, 5, 7, 8], (item) => Boolean(item + 3 === 4));
+
+filter(['cxk', 'yujingwang', 'kobe', 'lerbon', 'present', '123456'], (item) => Boolean(item.length >= 6));
