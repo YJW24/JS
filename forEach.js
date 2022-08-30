@@ -1,11 +1,7 @@
-let func = function (item) {
-    console.log(item + 2)
-}
-
-let eachFor = function (array, func) {
+let eachFor = (array, fn) => {
     for (let i = 0; i < array.length; i++) {
-        func(array[i]);
+        fn(array[i]);
     }
 }
-
-eachFor(["2", 2, 4], func);
+let func;
+eachFor(["2", 2, 4], func = (item) => { console.log(item) });
