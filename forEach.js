@@ -1,10 +1,10 @@
-let func = function (obj) {
-    console.log(obj + 2)
+let func = function (item) {
+    console.log(item + 2)
 }
 
-let eachFor = function (array, obj) {
+let eachFor = function (array, func) {
     for (let i = 0; i < array.length; i++) {
-        obj(array[i]);
+        func(array[i]);
     }
 }
 
