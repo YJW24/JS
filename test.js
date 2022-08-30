@@ -17,9 +17,6 @@ let filter = (array, fn) => {
     }
     console.log(newArray)
     return newArray;
-
 }
-
-filter([1, 2, 4, 5, 7, 8], (item) => (item + 3 === 4));
-
+filter([1, 2, 4, 5, 7, 8], (item) => (item + 3 == 4));
 filter(['cxk', 'yujingwang', 'kobe', 'lerbon', 'present', '123456'], (item) => (item.length >= 6));
