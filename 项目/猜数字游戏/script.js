@@ -62,4 +62,3 @@ document.querySelector('.again').addEventListener('click',
         highScore = document.querySelector('.highscore').textContent;
     });
 
-
