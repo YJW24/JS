@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document.write() Example</title>
+</head>
+
+<body>
+    <div style="color:#00FF00">
+        <h3>This is a header</h3>
+        <p>This is a paragraph.</p>
+    </div>
+    <div id="myDiv" class="bd">
+        <p>于景旺</p>
+    </div>
+    <p>The current date and time is:</p>
+    <script type="text/javascript">
+
+        let div = document.getElementById('myDiv');
+        console.log(div);
+
+
+        //getAttribute()方法 
+        alert(div.getAttribute("id"));              //取得给定属性的值无论是否自定义
+        //setAttribute()方法
+        div.setAttribute("class", "jj");            //增添属性  存在就修改  且属性名会规范为小写
+        div.setAttribute("dir", "rtl");
+        div.setAttribute('style', "color:#00FF00"); //不存在 就添加  自定义属性也可以
+        //removeAttribure()方法
+        div.removeAttribute("style");                   //删除整个给定属性 不仅仅是属性值
+
+
+        let div1 = document.createElement("div");       //创建新元素 参数接收标签名 HTML不区分大小写 xml区分
+        div.setAttribute("id", "dada");
+        div.setAttribute("dir", "rtl");
+        console.log(div1);
+        document.body.appendChild(div1);                //把新建元素添加的文档<body>元素中
+
+    </script>
+</body>
+
+</html>
