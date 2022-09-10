@@ -9,21 +9,107 @@
 </head>
 
 <body>
-    <div style="color:#00FF00">
-        <h3>This is a header</h3>
-        <p>This is a paragraph.</p>
+
+
+    <div  id ="father" name="niHao" style="color:#00FF00">
+        <h3 id="son1">This is a header</h3>
+        <p id="son2" class="son2" name="son2">This is a paragraph.</p>
     </div>
     <div id="myDiv" class="bd">
-        <p>于景旺</p>
+        <p>The current date and time is:</p>
     </div>
-    <p>The current date and time is:</p>
+
     <script type="text/javascript">
 
-        let div = document.getElementById('myDiv');
+
+    //12个节点类型  文本节点和元素节点为重点
+    //Node类型
+        let someNode = document.getElementById("father");
+
+        if (someNode.nodeType == Node.ELEMENT_NODE) {
+            alert('是元素节点')
+        }
+        if (someNode.nodeType == 1) {
+            value = someNode.nodeName;
+            console.log(value);               // 为什么会大写 ？
+        }
+
+    //节点关系
+        console.log(someNode.childNodes);                //类数组实例 
+        console.log(someNode.childNodes[0]);         //用中括号访问
+        console.log(someNode.childNodes.item(1));    //用item（）访问
+        console.log(someNode.childNodes.length);    //3+2  有三个空格    会有NodeList是一个类数组 有length属性 具有实时性
+        console.log(someNode.firstChild==someNode.childNodes[0]);
+        console.log(someNode.lastChild==someNode.childNodes[4]);
+        
+        let sonNode1=document.getElementById("son1");
+        console.log(sonNode1.parentNode);
+
+        console.log(sonNode1.nextSibling);
+        console.log(someNode.childNodes[someNode.childNodes.length-1].previousSibling);
+
+        someNode.hasChildNodes();
+
+    //操纵节点的四个方法
+        let newNode=document.createTextNode("创建的新文本节点")   //文本节点创造 后面细讲
+        let returnNode=someNode.appendChild(newNode);    //用于在子元素列表末尾添加节点  若是已经存在的 会转移到新位置也就是列表末尾 返回新添加节点
+        console.log(returnNode==newNode);            //true
+        console.log(someNode.lastChild==newNode);    //true
+
+        returnNode=someNode.insertBefore(newNode,null);    //insertBefore() 方法接收两个参数 要插入节点和参照节点且要插入节点会变成参照节点前一个节点 参照为null就是插到末尾
+        console.log(newNode==someNode.lastChild);     //ture
+        returnNode=someNode.insertBefore(newNode,someNode.firstChild);   //变成新的第一个子节点
+        console.log(returnNode== newNode);        //true
+        console.log(newNode==someNode.firstChild)  //true
+
+        let returnedNode=someNode.replaceChild(newNode,someNode.lastChild);  //该方法会删掉被替换节点并返回该节点 前面是要替换节点 后面是被替换节点  被替换节点的关系会被复制过来
+        console.log(someNode.lastChild==newNode);  //true
+
+        let formerFirstChild=someNode.removeChild(someNode.lastChild);      //移除参数节点   四种方法都得先取得父节点
+
+    //其他方法 cloneNode（）    normalize（） 
+
+    //Document类型
+    //文档子节点
+        let html = document.documentElement;     //始终指向html页面的<html>元素
+        console.log(document.childNodes[0]);
+        console.log(document.firstChild); 
+        let body=document.body;                  //取得对<body>的引用
+        let doctype=document.doctype;
+        //浏览器可能会以不同方式对待html元素外部的注释    操作节点的方法也一般不会用在document对象
+    
+    //文档信息
+    
+    //定位元素    获取某个某组元素的引用  然后执行操作
+        let div = document.getElementById('myDiv');     // 参数ID和元素在页面的id属性值必须完全匹配 包括大小写
         console.log(div);
+        //div = document.getElementById('mydiv');      不匹配则则会返回null     若页面有相同ID的元素 该方法会返回文档第一个出现的
 
+        let  pElement=document.getElementsByTagName("p");   //返回该标签名的所有元素 HTMLcollection对象  也是实时的  实际上HTML页面不区分大小写  
+        console.log(pElement);
+        console.log(pElement.length);
+        console.log(pElement[0]);
 
-        //getAttribute()方法 
+        let mySon2=pElement.namedItem("son2");    //可以通过name属性取得某一项引用  参数name属性值
+        mySon2=pElement["son2"];  //可以用中括号
+        console.log(mySon2);
+        let allElements=document.getElementsByTagName("*");   /// *号返回页面所有元素的列表  顺序为出现顺序
+        console.log(allElements);
+       
+        let byName=document.getElementsByName("son2");  //返回具有给定name属性的所有元素  更多用在单选按钮
+        console.log(byName);
+
+    //特殊集合
+        //document.anchors;
+        //document.forms;
+        //document.images;
+        //document.links;
+    //DOM兼容性检验
+
+    //文档写入
+
+    //Element类型
+        //getAttribute()方法
         alert(div.getAttribute("id"));              //取得给定属性的值无论是否自定义
         //setAttribute()方法
         div.setAttribute("class", "jj");            //增添属性  存在就修改  且属性名会规范为小写
@@ -33,11 +119,25 @@
         div.removeAttribute("style");                   //删除整个给定属性 不仅仅是属性值
 
 
-        let div1 = document.createElement("div");       //创建新元素 参数接收标签名 HTML不区分大小写 xml区分
-        div.setAttribute("id", "dada");
-        div.setAttribute("dir", "rtl");
+        let div1 = document.createElement("div");       //创建新元素节点 参数接收标签名 HTML不区分大小写 xml区分
+        div1.setAttribute("id", "dada");
+        div1.setAttribute("dir", "ltr");
         console.log(div1);
-        document.body.appendChild(div1);                //把新建元素添加的文档<body>元素中
+        document.body.appendChild(div1);                //把新建元素添加的文档<body>元素中   新创建元素未加入到文档树 不会在页面显示
+        //text
+        let textNode = document.createTextNode("中国男篮加油!");    //创建文本节点方法
+        div1.appendChild(textNode);
+        let otherTextNode = document.createTextNode("疫情结束,四川加油！");//将作为同胞文本节点插入 两者间没有空格
+        div1.appendChild(otherTextNode);
+
+
+
+        console.log(div1.childNodes.length);        
+        console.log(div1.childNodes[0]);            
+        console.log(div1.childNodes.item(1));        //用item（）访问
+        
+
+
 
     </script>
 </body>
