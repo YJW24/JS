@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.3</title>
+</head>
+<body>
+    <p class="username current">username</p>
+    <p class="selected">selected</p>
+    <div class="bd uesr disabled">...</div>
+    <div id="myDiv">
+        <p class="selected">selected</p>
+        <p class="current"><em class="selected">current</em></p>
+    </div>
+    <script>
+        let allCurrentUsernames=document.getElementsByClassName("username current");   //接收一个或者多个类名字符串(多个类名意思是同一个元素的多个类名) 返回相应的nodelist 顺序无关紧要 
+        console.log(allCurrentUsernames);
+        let selected=document.getElementById("myDiv").getElementsByClassName("selected");   // 也可在元素子树上用 用在特定元素上 会返回该元素后代所有匹配元素
+        console.log(selected)
+       
+        let div=document.querySelector(".bd");        
+        let targetClass="uesr";
+        let classNames=div.className.split(/\s+/);        //className是一个字符串  每次操作都得重新设置值才生效  以后几乎用不到
+        console.log(classNames);
+        let idx =classNames.indexOf(targetClass);    //O要大写  返回在数组中可以找到给定元素的第一个索引，如果不存在，则返回 -1 俩参数 第一个要找元素 第二个起始位置
+        if(idx>-1){
+            classNames.splice(idx,1);         //通过删除或替换现有元素或者原地添加新的元素来修改数组，并以数组形式返回被修改的内容。此方法会改变原数组 第一个起始位置 第二个数量
+            }
+        div.className=classNames.join(" ");
+        console.log(div.className);
+        //classList得大写    返回实例也有长度属性（类名列表）  下面的方法可以替代上面复杂代码
+        div.classList.remove("disabled");           
+        div.classList.add("current");
+        console.log(div.classList.contains("user")+"不存在");   //表示给定value是否存在
+        div.classList.toggle("user");                         //存在就删  不存在就添加
+        console.log(div.classList);
+    </script>
+</body>
+</html>
