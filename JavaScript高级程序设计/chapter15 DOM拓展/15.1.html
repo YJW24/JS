@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.1</title>
+</head>
+<body>
+    <div id="myDiv" class="selected">
+        <img class="button" src="15.1.png">
+        <em class="selected">十五章</em>
+    </div>
+    <p>
+        <strong class="strongs">啦啦啦</strong>
+        <strong class="strongs">六六六</strong>
+    </p>
+    <script>
+        //Selectors
+        let body =document.querySelector("body");             //元素名   如果匹配多值 选择第一个
+        console.log(body);
+        let myDiv=document.querySelector("#myDiv");           //id名     没有则返回null
+        console.log(myDiv);
+        let selected=document.body.querySelector("img.button");    //类名   得到类名为button的图片
+        console.log(selected);
+        
+        
+        let strongs=document.querySelectorAll("p strong");   //返回 静态的所有匹配的nodeList实例 没有返回空实例    所有是p元素子元素的strong元素
+        console.log(strongs);
+        let ems=document.getElementById("myDiv").querySelectorAll("em");  //返回该id下的所有em元素    在通过实例对象用中括号 item for-of方法可取得个别元素
+        console.log(ems);
+        if(!document.body.matches("body.page1")){
+            console.log("不匹配")
+        } ;               //返回布尔值 若匹配true
+    </script>
+</body>
+</html>
