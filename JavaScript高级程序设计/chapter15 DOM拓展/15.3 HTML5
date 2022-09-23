@@ -36,6 +36,35 @@
         console.log(div.classList.contains("user")+"不存在");   //表示给定value是否存在
         div.classList.toggle("user");                         //存在就删  不存在就添加
         console.log(div.classList);
+        //焦点管理
+        let button = document.getElementById("myButton");
+        button.focus();                       //手动让元素获得焦点  
+        console.log(document.activeElement === button);       //返回当前获得焦点的 Element ，如果没有焦点元素，会返回 <body> 或者 null  确定获得焦点的元素
+        console.log(document.hasFocus());     //true    如果当前文档的活动元素获得了焦点，返回 true，否则返回 false     查询文档是否获得焦点
+
+        if (document.readyState == "loading") {
+            console.log("加载完成");
+        }
+        //表明当前文档的渲染模式是混杂模式还是标准模式。
+        if (document.compatMode == "CSS1Compat") {        //不混杂值为CSS1Compat
+            console.log("Standards mode");    //标准
+        } else {
+            console.log("Quircks mode");       //混杂
+        }
+        //返回当前文档中的 <head> 元素。如果有多个 <head> 元素，则返回第一个  只读属性 不能赋值
+        let head = document.head;
+        //  字符集属性  只读属性返回当前文档的字符编码。
+
+        console.log(document.characterSet);     //UTF-8
+        //自定义数据属性  
+        let pp=document.createElement("p");
+        pp.dataset.myname="yjw";       // dataset 提供了对元素上自定义数据属性（data-*）
+        console.log(pp.dataset);        //返回DOMStringMap实例  包含一组键值对映射
+        //插入标记  Element.innerHTML 属性设置或获取 HTML 语法表示的元素的后代。
+        pp.innerHTML="Hello World!";  //赋值中不包含任何标签直接生成文本节点    不建议使用这么用 易被攻击
+        console.log(pp);
+        pp.innerHTML="Hello&,<b>\"reader\"!</b><strong>加粗</strong>";    //该节点包含字符 (&), (<), 或(>), innerHTML 将这些字符分别返回为&amp;, &lt; 和 &gt;
+        document.body.appendChild(pp);     //添加到树
     </script>
 </body>
 </html>
