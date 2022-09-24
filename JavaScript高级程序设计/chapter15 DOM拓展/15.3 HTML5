@@ -7,6 +7,7 @@
     <title>15.3</title>
 </head>
 <body>
+    <button id="myButton">OOO</button>
     <p class="username current">username</p>
     <p class="selected">selected</p>
     <div class="bd uesr disabled">...</div>
@@ -60,11 +61,29 @@
         let pp=document.createElement("p");
         pp.dataset.myname="yjw";       // dataset 提供了对元素上自定义数据属性（data-*）
         console.log(pp.dataset);        //返回DOMStringMap实例  包含一组键值对映射
-        //插入标记  Element.innerHTML 属性设置或获取 HTML 语法表示的元素的后代。
+        //插入标记  
+        //Element.innerHTML 属性设置或获取 HTML 语法表示的元素的后代。
         pp.innerHTML="Hello World!";  //赋值中不包含任何标签直接生成文本节点    不建议使用这么用 易被攻击
         console.log(pp);
         pp.innerHTML="Hello&,<b>\"reader\"!</b><strong>加粗</strong>";    //该节点包含字符 (&), (<), 或(>), innerHTML 将这些字符分别返回为&amp;, &lt; 和 &gt;
         document.body.appendChild(pp);     //添加到树
+        
+         //outerHTML属性
+        console.log(pp.outerHTML);          //返回时，内容包含描述元素及其后代的序列化 HTML 片段。  和innerHTML一样 返回的字符串可能不同
+        let p = document.getElementsByTagName("p")[0];
+        console.log(p.nodeName);    // 显示: "P"
+        p.outerHTML = "<div>This div replaced a paragraph.</div>";
+        console.log(p);    //outerHTML赋值后再读，得到的仍然是旧值，获取新后代也失败，这意味着在第二次读时，DOM还没有发生变化。此即说明outerHTML的赋值是异步的：
+        console.log(p.nodeName);    // 仍然为: "P"
+        
+        //insertAdjacentHTML（）  将指定的文本解析为 Element 元素，并将结果节点插入到 DOM 树中的指定位置。
+        const myDiv=document.querySelector("#myDiv");
+        myDiv.insertAdjacentHTML("beforebegin","<p>Hello</p>"); //第一个参数是位置，第二个是html或文本
+        console.log(myDiv.previousSibling);   //beforebegin元素自身的前面 afterbegin作为第一个子节点插入 beforeend作为最后一个子节点插入 afterend元素自身的后面。
+        
+        //insertAdjacentText() 方法将一个给定的文本节点插入在相对于被调用的元素给定的位置。
+        myDiv.insertAdjacentText("beforeend","Hello world!");     //规则和上面一样  就是用的文本节点
+        console.log(myDiv.lastChild);
     </script>
 </body>
 </html>
